@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TodoItem from './TodoItem';
+import TodoForm from './TodoForm';
 
 interface Todo {
   id: number;
@@ -42,9 +43,20 @@ export default function TodoList() {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
+  const handleAdd = (title: string, description: string) => {
+    const newTodo: Todo = {
+      id: Date.now(),
+      title,
+      description,
+      completed: false
+    };
+    setTodos([...todos, newTodo]);
+  };
+
   return (
     <div className="todo-list">
       <h1>To-do</h1>
+      <TodoForm onAdd={handleAdd} />
       <ul>
         {todos.map(todo => (
           <TodoItem
