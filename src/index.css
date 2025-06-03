@@ -5,7 +5,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #f3f4f6;
+  background-color: #d3d3d3;
   font-family: 'Reddit Sans', sans-serif;
 }
 
@@ -132,4 +132,14 @@ body {
 .todo-delete:hover {
   background-color: #fee2e2;
   color: #ef4444;
+}
+
+.empty-message {
+  text-align: center;
+  color: #6b7280;
+  padding: 2rem;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  margin-top: 2rem;
+  border: 2px dashed #e5e7eb;
 }

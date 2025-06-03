@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
 
@@ -31,7 +31,16 @@ const INITIAL_TODOS: Todo[] = [
 ];
 
 export default function TodoList() {
-  const [todos, setTodos] = useState<Todo[]>(INITIAL_TODOS);
+  const [todos, setTodos] = useState<Todo[]>(() => {
+  
+    const savedTodos = localStorage.getItem('todos');
+    return savedTodos ? JSON.parse(savedTodos) : INITIAL_TODOS;
+  });
+
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const handleToggle = (id: number) => {
     setTodos(todos.map(todo =>
@@ -67,6 +76,9 @@ export default function TodoList() {
           />
         ))}
       </ul>
+      {todos.length === 0 && (
+        <p className="empty-message">Inga todos än! Lägg till några uppgifter.</p>
+      )}
     </div>
   );
 } 
