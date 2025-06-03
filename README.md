@@ -1,47 +1,60 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Tfc19Mhg)
-# Inlämningsuppgift Todo
+# Todo-lista App
 
-I denna inlämningsuppgift kommer ni att skapa er egen todo-lista.
-Sidan skall visa ett antal punkter som skall göras. Dessa skall då komma upp på skärmen i form av en lista. När uppgiften är slutförd skall användaren kunna markera uppgiften som slutförd och uppgiften skall då tas bort från listan.
+En  todo-app byggd med React, TypeScript och Vite. Appen är utvecklad som en Progressive Web App (PWA) vilket betyder att den kan installeras och användas offline.
 
-## Betyg G
+## Funktioner
 
-- Skapa en hårdkodad lista med punkter att göra (hitta på egna punkter, dessa skall inte bara vara en text)
-- Presentera listan på skärmen, helst med lite kontroll. Detta betyder i en html-struktur t.ex. i en ul/li-lista
-- Implementera klickhändelse för att hantera borttagandet av en todo.
-- Todo markeras som klar på skärmen och markeras som klar i javascript-listan.
-- Ni behöver använda localStorage så att listan inte börjar om från början varje gång sidan används.
-- Ni behöver använda er av en komponent.
-- Ni behöver använda er av state med en lista med objekt.
+-  Skapa, redigera och ta bort todos
+-  Markera todos som klara/oklara
+-  Filtrera mellan aktiva och avklarade todos
+-  Sortera todos med upp/ner-pilar
+-  Automatisk sparning i localStorage
+-  Fungerar offline (PWA)
 
-## Betyg VG
+## Teknisk Stack
 
-- Alla punkter under G
-- Kunna visa även klara händelser och klicka tillbaka den så att de blir oklara igen.
-- Skapa ett formulär som tillåter att en användare skapar nya todos efterhand.
-- Kunna sortera ordningen på dina todos.
-- Implementera ett valfritt grafiskt ramverk, t.ex. tailwind eller material ui.
-- Ni behöver ha minst tre komponenter.
-- Ni måste använda Lifting State Up.
+- React 19
+- TypeScript
+- Vite
+- Custom CSS (utan ramverk)
+- Service Workers för PWA-funktionalitet
 
-## Allmänt
+## Installation
 
-Projektet ni har är ett vite-projekt. D.v.s. ni måste köra:
-
-```shell
-npm i
+1. Klona repot:
+```bash
+git clone https://github.com/EmelieSonjaBoss/fed24d-the-last-todos-EmelieSonjaBoss.git
 ```
 
-och
-
-```shell
-npm run dev 
+2. Installera beroenden:
+```bash
+npm install --legacy-peer-deps
 ```
 
-för att köra projektet.
+3. Starta utvecklingsservern:
+```bash
+npm run dev
+```
 
-- Det finns många sätt att lösa denna uppgift på. Om ni känner er osäkra på någonting, fråga hellre någon gång för mycket så att ni känner er säkra på vad ni utvecklar.
-- Ni får gärna ändra strukturen i projektet, detta är bara en grund.
-- Börja med att planera ert arbete, börja inte med Visual Studio Code, även om det är lockande.
-- Gör ert bästa att inte stressa. Lättare sagt än gjort, jag vet. Men ingen mår bättre av att stressa.
-- Ha roligt, skratta när det blir fel och fortsätt att vara nyfiken :)
+
+## Live Demo
+
+Besök och ladda ner appen på: [https://emeliesonjaboss.github.io/fed24d-the-last-todos-EmelieSonjaBoss](https://emeliesonjaboss.github.io/fed24d-the-last-todos-EmelieSonjaBoss)
+
+![Download help](src\assets\images\download.jpg)
+
+
+## Projektstruktur
+
+```
+src/
+  ├── components/        # React-komponenter
+  │   ├── TodoList.tsx  # Huvudkomponent för todo-listan
+  │   ├── TodoItem.tsx  # Komponent för enskilda todos
+  │   └── TodoForm.tsx  # Formulär för att skapa nya todos
+  └── styles/           # CSS-filer för varje komponent
+```
+
+## Skapad av
+
+Emelie Boss
