@@ -6,7 +6,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: #f3f4f6;
-  font-family: 'Kantumruy Pro', sans-serif;
+  font-family: 'Reddit Sans', sans-serif;
 }
 
 .container {
@@ -29,10 +29,27 @@ body {
 }
 
 .todo-item {
+  display: flex;
+  align-items: center;
   padding: 1rem;
   margin-bottom: 0.5rem;
   background-color: #f9fafb;
   border-radius: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.todo-item.completed {
+  opacity: 0.7;
+}
+
+.todo-content {
+  flex-grow: 1;
+  margin: 0 1rem;
+}
+
+.todo-item.completed .todo-content {
+  text-decoration: line-through;
+  color: #6b7280;
 }
 
 .todo-item h3 {
@@ -44,4 +61,38 @@ body {
   margin: 0.25rem 0 0;
   color: #6b7280;
   font-size: 0.875rem;
+}
+
+.todo-toggle,
+.todo-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.todo-toggle {
+  color: #9ca3af;
+}
+
+.todo-item.completed .todo-toggle {
+  color: #10b981;
+}
+
+.todo-delete {
+  color: #9ca3af;
+}
+
+.todo-toggle:hover {
+  background-color: #f3f4f6;
+  color: #10b981;
+}
+
+.todo-delete:hover {
+  background-color: #fee2e2;
+  color: #ef4444;
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import TodoItem from './TodoItem';
 
 interface Todo {
@@ -11,7 +12,7 @@ const INITIAL_TODOS: Todo[] = [
   {
     id: 1,
     title: "Kolla på missade föreläsningar",
-    description: "Snabbkolla alltihop!",
+    description: "Snabkolla alltihop!",
     completed: false
   },
   {
@@ -29,12 +30,29 @@ const INITIAL_TODOS: Todo[] = [
 ];
 
 export default function TodoList() {
+  const [todos, setTodos] = useState<Todo[]>(INITIAL_TODOS);
+
+  const handleToggle = (id: number) => {
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ));
+  };
+
+  const handleDelete = (id: number) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
   return (
     <div className="todo-list">
       <h1>To-do</h1>
       <ul>
-        {INITIAL_TODOS.map(todo => (
-          <TodoItem key={todo.id} todo={todo} />
+        {todos.map(todo => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggle={handleToggle}
+            onDelete={handleDelete}
+          />
         ))}
       </ul>
     </div>
