@@ -1,18 +1,23 @@
 import { useState } from 'react';
+import './TodoForm.css';
 
+// Props that this component accepts
 interface TodoFormProps {
   onAdd: (title: string, description: string) => void;
 }
 
+// Component for adding new todos with title and description
 export default function TodoForm({ onAdd }: TodoFormProps) {
+  // State for form inputs
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title.trim()) return;
+    if (!title.trim()) return; // Don't add empty todos
     onAdd(title.trim(), description.trim());
-    setTitle('');
+    setTitle(''); // Clear inputs after adding
     setDescription('');
   };
 

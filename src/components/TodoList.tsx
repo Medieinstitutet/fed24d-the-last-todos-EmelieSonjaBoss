@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
+import './TodoList.css';
 
+// Defines the shape of our todo items
 interface Todo {
   id: number;
   title: string;
@@ -9,51 +11,38 @@ interface Todo {
   completed: boolean;
 }
 
-const INITIAL_TODOS: Todo[] = [
-  {
-    id: 1,
-    title: "Kolla på missade föreläsningar",
-    description: "Snabkolla alltihop!",
-    completed: false
-  },
-  {
-    id: 2,
-    title: "Gör klart todo-uppgiften",
-    description: "G-krav och frivilliga VG-krav",
-    completed: false
-  },
-  {
-    id: 3,
-    title: "Uppdatera Portfolio med nytt mini-projekt",
-    description: "Kanske lägg till något mer kul?",
-    completed: false
-  }
-];
-
+// Main component that handles all todo functionality
 export default function TodoList() {
+  // State for todos - tries to load from localStorage first
   const [todos, setTodos] = useState<Todo[]>(() => {
     const savedTodos = localStorage.getItem('todos');
-    return savedTodos ? JSON.parse(savedTodos) : INITIAL_TODOS;
+    return savedTodos ? JSON.parse(savedTodos) : [];
   });
+
+  // State to toggle between showing active or completed todos
   const [showCompleted, setShowCompleted] = useState(false);
 
+  // Save todos to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
+  // Marks a todo as complete or incomplete
   const handleToggle = (id: number) => {
     setTodos(todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ));
   };
 
+  // Removes a todo from the list
   const handleDelete = (id: number) => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
+  // Adds a new todo to the list
   const handleAdd = (title: string, description: string) => {
     const newTodo: Todo = {
-      id: Date.now(),
+      id: Date.now(), // Uses timestamp as a unique ID
       title,
       description,
       completed: false
@@ -61,33 +50,41 @@ export default function TodoList() {
     setTodos([...todos, newTodo]);
   };
 
+  // Moves a todo up or down in the list
   const moveItem = (id: number, direction: 'up' | 'down') => {
+    // Get current visible todos based on completed status
     const currentTodos = todos.filter(todo => 
       showCompleted ? todo.completed : !todo.completed
     );
+    // Get the other todos that aren't currently visible
     const otherTodos = todos.filter(todo => 
       showCompleted ? !todo.completed : todo.completed
     );
 
     const index = currentTodos.findIndex(todo => todo.id === id);
+    // Don't move if we're at the top/bottom of the list
     if (
       (direction === 'up' && index === 0) || 
       (direction === 'down' && index === currentTodos.length - 1)
     ) {
-      return; // Can't move further
+      return;
     }
 
+    // Swap the todo with its neighbor
     const newTodos = [...currentTodos];
     const swapIndex = direction === 'up' ? index - 1 : index + 1;
     [newTodos[index], newTodos[swapIndex]] = [newTodos[swapIndex], newTodos[index]];
 
+    // Update the full list, keeping invisible todos in their original position
     setTodos(showCompleted ? [...otherTodos, ...newTodos] : [...newTodos, ...otherTodos]);
   };
 
+  // Get the todos that should be visible based on completed status
   const visibleTodos = todos.filter(todo => 
     showCompleted ? todo.completed : !todo.completed
   );
 
+  // Count todos for the status display
   const activeTodosCount = todos.filter(todo => !todo.completed).length;
   const completedTodosCount = todos.filter(todo => todo.completed).length;
 

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import './TodoItem.css';
 
+// Shape of a todo item that this component will display
 interface Todo {
   id: number;
   title: string;
@@ -7,16 +9,20 @@ interface Todo {
   completed: boolean;
 }
 
+// Props that this component accepts
 interface TodoItemProps {
   todo: Todo;
   onToggle: (id: number) => void;
   onDelete: (id: number) => void;
 }
 
+// Component that displays a single todo item with completion and delete functionality
 export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
+  // State for handling fade animations
   const [isRemoving, setIsRemoving] = useState(false);
   const [isEntering, setIsEntering] = useState(true);
 
+  // Start entrance animation when the component mounts
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsEntering(false);
@@ -24,6 +30,7 @@ export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
     return () => clearTimeout(timer);
   }, []);
 
+  // Handle delete with fade-out animation
   const handleDelete = () => {
     setIsRemoving(true);
     setTimeout(() => {
@@ -31,6 +38,7 @@ export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
     }, 200);
   };
 
+  // Handle completion toggle with animation
   const handleToggle = () => {
     setIsRemoving(true);
     setTimeout(() => {
