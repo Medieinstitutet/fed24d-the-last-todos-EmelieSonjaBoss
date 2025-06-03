@@ -1,4 +1,4 @@
-# Todo-lista App
+# Todo App
 
 En  todo-app byggd med React, TypeScript och Vite. Appen är utvecklad som en Progressive Web App (PWA) vilket betyder att den kan installeras och användas offline.
 
