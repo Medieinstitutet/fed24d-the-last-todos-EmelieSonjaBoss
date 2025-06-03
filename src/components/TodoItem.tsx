@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 interface Todo {
   id: number;
   title: string;
@@ -12,18 +14,43 @@ interface TodoItemProps {
 }
 
 export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
+  const [isRemoving, setIsRemoving] = useState(false);
+  const [isEntering, setIsEntering] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsEntering(false);
+    }, 200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleDelete = () => {
+    setIsRemoving(true);
+    setTimeout(() => {
+      onDelete(todo.id);
+    }, 200);
+  };
+
+  const handleToggle = () => {
+    setIsRemoving(true);
+    setTimeout(() => {
+      onToggle(todo.id);
+      setIsRemoving(false);
+    }, 200);
+  };
+
   return (
-    <li className={`todo-item ${todo.completed ? 'completed' : ''}`}>
-      <button onClick={() => onToggle(todo.id)} className="todo-toggle">
+    <div className={`todo-item ${todo.completed ? 'completed' : ''} ${isRemoving ? 'removing' : ''} ${isEntering ? 'entering' : ''}`}>
+      <button onClick={handleToggle} className="todo-toggle">
         {todo.completed ? '✓' : '○'}
       </button>
       <div className="todo-content">
         <h3>{todo.title}</h3>
         <p>{todo.description}</p>
       </div>
-      <button onClick={() => onDelete(todo.id)} className="todo-delete">
+      <button onClick={handleDelete} className="todo-delete">
         ×
       </button>
-    </li>
+    </div>
   );
 } 
