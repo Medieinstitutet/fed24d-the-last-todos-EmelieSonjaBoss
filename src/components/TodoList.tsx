@@ -13,10 +13,29 @@ interface Todo {
 
 // Main component that handles all todo functionality
 export default function TodoList() {
-  // State for todos - tries to load from localStorage first
+  // State for todos - starts with hardcoded items
   const [todos, setTodos] = useState<Todo[]>(() => {
     const savedTodos = localStorage.getItem('todos');
-    return savedTodos ? JSON.parse(savedTodos) : [];
+    return savedTodos ? JSON.parse(savedTodos) : [
+      {
+        id: 1,
+        title: "Lära sig React",
+        description: "Kolla igenom React-föreläsningarna",
+        completed: false
+      },
+      {
+        id: 2,
+        title: "Gör en hard reset",
+        description: "Ta mig tillbaka till versionen för todo-appen",
+        completed: false
+      },
+      {
+        id: 3,
+        title: "Styla appen",
+        description: "Lägg till CSS för att göra appen snygg",
+        completed: false
+      }
+    ];
   });
 
   // State to toggle between showing active or completed todos
@@ -42,7 +61,7 @@ export default function TodoList() {
   // Adds a new todo to the list
   const handleAdd = (title: string, description: string) => {
     const newTodo: Todo = {
-      id: Date.now(), // Uses timestamp as a unique ID
+      id: Date.now(),
       title,
       description,
       completed: false
