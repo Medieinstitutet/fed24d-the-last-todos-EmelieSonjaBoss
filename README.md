@@ -1,5 +1,6 @@
 # Todo App
 
+
 En  todo-app byggd med React, TypeScript och Vite. Appen är utvecklad som en Progressive Web App (PWA) vilket betyder att den kan installeras och användas offline.
 
 ## Funktioner
@@ -16,7 +17,8 @@ En  todo-app byggd med React, TypeScript och Vite. Appen är utvecklad som en Pr
 - React 19
 - TypeScript
 - Vite
-- Custom CSS (utan ramverk)
+- Sass
+- LocalStorage
 - Service Workers för PWA-funktionalitet
 
 ## Installation
@@ -52,8 +54,11 @@ src/
   │   ├── TodoList.tsx  # Huvudkomponent för todo-listan
   │   ├── TodoItem.tsx  # Komponent för enskilda todos
   │   └── TodoForm.tsx  # Formulär för att skapa nya todos
-  └── styles/           # CSS-filer för varje komponent
+  └── styles/           # Sass-filer för varje komponent och globala variabler/mixins
 ```
+
+## Tvilling-app
+Kolla in packlistan på https://emeliesonjaboss.github.io/packing-list/
 
 ## Skapad av
 
