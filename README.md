@@ -43,7 +43,7 @@ npm run dev
 
 Besök och ladda ner appen på: [https://emeliesonjaboss.github.io/fed24d-the-last-todos-EmelieSonjaBoss](https://emeliesonjaboss.github.io/fed24d-the-last-todos-EmelieSonjaBoss)
 
-![Download help](src\assets\images\download.jpg)
+![Download help](src/assets/images/download.jpg)
 
 
 ## Projektstruktur
