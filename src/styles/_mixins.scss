@@ -1,0 +1,42 @@
+@use 'variables' as *;
+
+// Flexbox mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Button styles
+@mixin button-base {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-sm;
+  font-size: $font-size-lg;
+  line-height: 1;
+  border-radius: $border-radius-sm;
+  transition: all $transition-speed $transition-timing;
+}
+
+// Input styles
+@mixin input-base {
+  width: 96.25%;
+  padding: $spacing-md;
+  margin-bottom: $spacing-md;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  transition: border-color $transition-speed $transition-timing;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+  }
+} 

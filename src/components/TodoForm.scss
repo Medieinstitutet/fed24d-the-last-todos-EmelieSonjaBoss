@@ -1,0 +1,26 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.todo-form {
+  margin-bottom: $spacing-xl;
+}
+
+.todo-input {
+  @include input-base;
+}
+
+.todo-submit {
+  width: 100%;
+  padding: $spacing-md;
+  background-color: $primary-light;
+  color: white;
+  border: none;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: background-color $transition-speed $transition-timing;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+} 

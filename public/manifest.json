@@ -4,9 +4,9 @@
   "description": "En enkel och effektiv todo-lista för att hålla koll på dina uppgifter",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon.svg",
       "sizes": "64x64",
-      "type": "image/x-icon"
+      "type": "image/svg+xml"
     },
     {
       "src": "logo192.png",
@@ -23,7 +23,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#b16e82",
+  "theme_color": "#6b878b",
   "background_color": "#d3d3d3",
   "orientation": "portrait"
 } 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './TodoForm.css';
+import './TodoForm.scss';
 
 // Props that this component accepts
 interface TodoFormProps {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './TodoItem.css';
+import './TodoItem.scss';
 
 // Shape of a todo item that this component will display
 interface Todo {

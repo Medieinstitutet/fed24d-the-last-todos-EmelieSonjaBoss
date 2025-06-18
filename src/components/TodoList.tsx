@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
-import './TodoList.css';
+import './TodoList.scss';
 
 // Defines the shape of our todo items
 interface Todo {

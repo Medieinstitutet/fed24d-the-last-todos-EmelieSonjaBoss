@@ -1,0 +1,25 @@
+@use './styles/variables' as *;
+@use './styles/mixins' as *;
+@use './styles/animations' as *;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: $background-color;
+  font-family: 'Reddit Sans', sans-serif;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $spacing-xl;
+}
+
+// Import component styles
+@import './components/TodoList.scss';
+@import './components/TodoItem.scss';
+@import './components/TodoForm.scss'; 

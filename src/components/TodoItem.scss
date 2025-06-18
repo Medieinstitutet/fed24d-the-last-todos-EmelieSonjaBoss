@@ -1,0 +1,61 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+@use '../styles/animations' as *;
+
+.todo-item {
+  flex: 1;
+  @include flex-center;
+  padding: $spacing-md;
+  background: $hover-bg;
+  border-radius: $border-radius-sm;
+
+  &.completed {
+    opacity: 0.7;
+  }
+
+  &.removing {
+    @extend .fade-exit;
+  }
+
+  &.entering {
+    @extend .fade-enter;
+  }
+}
+
+.todo-content {
+  flex-grow: 1;
+  margin: 0 $spacing-md;
+
+  h3 {
+    margin: 0;
+    color: $text-color;
+  }
+
+  p {
+    margin: $spacing-xs 0 0;
+    color: $text-light;
+    font-size: $font-size-sm;
+  }
+}
+
+.todo-toggle,
+.todo-delete {
+  @include button-base;
+  color: $text-light;
+}
+
+.todo-item.completed {
+  .todo-toggle {
+    color: $primary-color;
+  }
+}
+
+.todo-toggle:hover {
+  background-color: $hover-bg;
+  color: $primary-color;
+}
+
+.todo-delete:hover {
+  background-color: $delete-hover;
+  color: $delete-color;
+} 
