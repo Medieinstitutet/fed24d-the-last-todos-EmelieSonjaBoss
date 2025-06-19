@@ -57,7 +57,7 @@ src/
   └── styles/           # Sass-filer för varje komponent och globala variabler/mixins
 ```
 
-## Tvilling-app
+## Syskon-app
 Kolla in packlistan på https://emeliesonjaboss.github.io/packing-list/
 
 ## Skapad av
